@@ -15,6 +15,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     if: ${{ github.event.registry_package.package_version.container_metadata.tag.name == 'dev' || github.event_name == 'workflow_dispatch' }}
+    permissions:
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
