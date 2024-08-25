@@ -14,7 +14,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    if: ${{ github.event.registry_package.package_version.container_metadata.tag.name != '' }}
+    if: ${{ github.event.registry_package.package_version.container_metadata.tag.name == 'dev' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -32,6 +32,14 @@ jobs:
           username: ${{ env.USERNAME }}
           password: ${{ env.PASSWORD }}
 
+      - name: Create Dockerfile dynamically
+        run: |
+          cat <<EOF > .github/workflows/dev.dockerfile
+          ARG REGISTRY
+          ARG IMAGE_NAME
+          FROM \${REGISTRY}/\${IMAGE_NAME}:dev
+          EOF
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
@@ -43,7 +51,4 @@ jobs:
           build-args: |
             REGISTRY=${{env.REGISTRY}}
             IMAGE_NAME=${{env.IMAGE_NAME}}
-          dockerfile: |
-            ARG REGISTRY
-            ARG IMAGE_NAME
-            FROM ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:dev
+          file: .github/workflows/dev.dockerfile
