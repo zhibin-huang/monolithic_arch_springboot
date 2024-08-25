@@ -3,15 +3,15 @@
 {
 	"name": "Java",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ghcr.io/zhibin-huang/monolithic_arch_springboot:dev"
+	"image": "mcr.microsoft.com/devcontainers/java:1-11-bullseye",
 	
-	// "features": {
-	// 	"ghcr.io/devcontainers/features/java:1": {
-	// 		"version": "none",
-	// 		"installMaven": "true",
-	// 		"installGradle": "false"
-	// 	}
-	// }
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "none",
+			"installMaven": "true",
+			"installGradle": "false"
+		}
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
