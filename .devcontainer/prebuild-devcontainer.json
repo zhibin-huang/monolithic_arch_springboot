@@ -4,14 +4,14 @@
 	"name": "Java",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/java:1-11-bullseye",
-	
+
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "none",
 			"installMaven": "true",
 			"installGradle": "false"
 		}
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -20,8 +20,27 @@
 	// "postCreateCommand": "java -version",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
-
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"github.vscode-github-actions",
+				"ms-vscode-remote.vscode-remote-extensionpack",
+				"vscjava.vscode-java-pack",
+				"GitHub.copilot",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"redhat.vscode-yaml",
+				"vmware.vscode-boot-dev-pack",
+				"dbaeumer.vscode-eslint",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.remote-repositories",
+				"GitHub.codespaces",
+				"GitHub.vscode-pull-request-github",
+				"ms-vscode.live-server",
+				"cweijan.vscode-mysql-client2",
+				"redhat.vscode-xml"
+			]
+		}
+	}
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
