@@ -3,7 +3,7 @@ name: Build and Push Multi-Arch Docker Image
 on:
   workflow_dispatch:
   registry_package:
-    types: [published]
+    types: [published, updated]
 
 env:
   REGISTRY: ghcr.io
